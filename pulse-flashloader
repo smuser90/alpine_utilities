@@ -16,7 +16,10 @@ while true;
 		sudo umount /media/pi/Pulse;
 		sudo rm -rf /media/pi/Pulse;
 		echo '';
-		sleep 3;
+		while lsusb | grep Freescale >/dev/null;
+			do echo 'Please remove Pulse to continue.';
+			sleep 1;
+		done;
 		echo 'Resuming scan for Pulse'
 	fi;
 done
