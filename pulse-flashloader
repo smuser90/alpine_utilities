@@ -13,7 +13,7 @@ while true;
 		cp /home/pi/alpine_utilities/pulse-firmware.sb /media/pi/Pulse/;
 		sleep 15; echo 'Done Copying. You may remove Pulse.';
 		sudo umount /media/pi/Pulse;
-		sudo rm /media/pi/Pulse;
+		sudo rm -rf /media/pi/Pulse;
 		echo '';
 	fi;
 done
