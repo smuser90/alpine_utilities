@@ -7,6 +7,6 @@ duration = sys.argv[1]
 
 led.on()
 
-sleep(duration)
+sleep(float(duration))
 
 led.off()
