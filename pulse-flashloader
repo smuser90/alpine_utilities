@@ -5,8 +5,11 @@ echo 'Listening for Pulse connections via USB' ;
 echo '' ;
 
 while true;
+	python /home/pi/alpine_utilities/pulse-LED.py 0.1&;
+	sleep 0.1;
 	do if lsusb | grep Freescale >/dev/null; then
 		sleep 1;
+		python /home/pi/alpine_utilities/pulse-LED.py 15&;
 		sudo rm -rf /media/pi/Pulse;
 	  sudo mkdir /media/pi/Pulse;
 		sudo mount -t vfat /dev/sd* /media/pi/Pulse;
