@@ -6,6 +6,7 @@ echo '' ;
 
 while true;
 	do if lsusb | grep Freescale >/dev/null; then
+		sleep 1;
 		sudo rm -rf /media/pi/Pulse;
 	  sudo mkdir /media/pi/Pulse;
 		sudo mount -t vfat /dev/sd* /media/pi/Pulse;
@@ -16,6 +17,6 @@ while true;
 		sudo rm -rf /media/pi/Pulse;
 		echo '';
 		sleep 3;
-		echo 'Resuming scan for Pulse' 
+		echo 'Resuming scan for Pulse'
 	fi;
 done
