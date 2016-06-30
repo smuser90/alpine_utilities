@@ -21,6 +21,7 @@ while true;
 		echo '';
 		while lsusb | grep Freescale >/dev/null;
 			do echo 'Please remove Pulse to continue.';
+			sudo rm -rf /media/pi/Pulse;
 			sleep 1;
 		done;
 		echo 'Resuming scan for Pulse'
