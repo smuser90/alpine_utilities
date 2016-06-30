@@ -28,6 +28,7 @@ while true;
 			sleep 1;
 		done;
 
+		sudo umount /media/pi/Pulse;
 		sudo rm -rf /media/pi/Pulse;
 		echo ''
 		echo 'Resuming scan for Pulse'
