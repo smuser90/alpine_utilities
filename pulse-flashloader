@@ -1,36 +1,49 @@
 #!/bin/sh
 
-clear; echo 'Running Alpine Labs flashloader' ;
+clear;
+echo 'Running Alpine Labs flashloader' ;
 echo 'Listening for Pulse connections via USB' ;
 echo '' ;
 
 while true;
+
 	python /home/pi/alpine_utilities/pulse-LED.py 0.1 &
 	sleep 0.1;
+
 	do if lsusb | grep Freescale >/dev/null; then
+
 		sleep 1;
 		python /home/pi/alpine_utilities/pulse-LED.py 15 &
-		if ls /media/pi/ | grep Pulse; then
+
+		# Check to see if the device was mounted correctly
+		if ls /media/pi/ | grep Pulse >/dev/null; then
 			echo 'Pulse was mounted correctly'
 		else
 			echo 'Mounting Pulse...'
-			sudo mkdir /media/pi/Pulse;
-			sudo mount -t vfat /dev/sd* /media/pi/Pulse;
+			sudo mkdir /media/pi/Pulse >/dev/null;
+			sudo mount -t vfat /dev/sd* /media/pi/Pulse >/dev/null;
 		fi;
 
 		echo 'Copying Firmware to Pulse. Please Wait...';
-		cp /home/pi/alpine_utilities/pulse-firmware.sb /media/pi/Pulse/;
+		cp /home/pi/alpine_utilities/pulse-firmware.sb /media/pi/Pulse/ >/dev/null;
+
 		sleep 15;
 		echo 'Done Copying. You may now remove Pulse.';
 
+		# Wait for the Operator to unplug the device
 		while lsusb | grep Freescale >/dev/null;
 			do echo 'Please remove Pulse to continue.';
 			sleep 1;
 		done;
 
-		sudo umount /media/pi/Pulse;
-		sudo rm -rf /media/pi/Pulse;
-		echo ''
-		echo 'Resuming scan for Pulse'
+		# Clean up the mount point
+		sudo umount /media/pi/Pulse >/dev/null;
+		sudo rm -rf /media/pi/Pulse >/dev/null;
+
+		clear;
+		echo 'Running Alpine Labs flashloader' ;
+		echo 'Listening for Pulse connections via USB' ;
+		echo '' ;
 	fi;
+
 done
