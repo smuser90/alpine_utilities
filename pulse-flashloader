@@ -10,7 +10,7 @@ while true;
 	python /home/pi/alpine_utilities/pulse-LED.py 0.1 &
 	sleep 0.1;
 
-	do if { lsusb | grep Freescale >/dev/null } || { lsusb | grep a531:0000 >/dev/null }; then
+	do if ( lsusb | grep Freescale >/dev/null ) || ( lsusb | grep a531:0000 >/dev/null ); then
 
 		sleep 1;
 		python /home/pi/alpine_utilities/pulse-LED.py 15 &
