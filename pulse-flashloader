@@ -11,8 +11,8 @@ while true;
 	sleep 0.1;
 
 	do if ( lsusb | grep Freescale >/dev/null ) || ( lsusb | grep a531:0000 >/dev/null ); then
-		echo 'found a device, going tos leep for a bit'		
-		sleep 6;
+		echo 'found a device, going to sleep for a bit'		
+		sleep 10;
 
 		python /home/pi/alpine_utilities/pulse-LED.py 10 &
 			
