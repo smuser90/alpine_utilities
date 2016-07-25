@@ -14,7 +14,7 @@ while true;
 		echo 'found a device, going to sleep for a bit'		
 		sleep 10;
 
-		python /home/pi/alpine_utilities/pulse-LED.py 10 &
+		python /home/pi/alpine_utilities/pulse-LED.py 15 &
 			
 		# Check to see if the device was mounted correctly
 		if ls /media/pi/ | grep Pulse >/dev/null; then
@@ -28,7 +28,7 @@ while true;
 		echo 'Copying Firmware to Pulse. Please Wait...';
 		cp /home/pi/alpine_utilities/pulse-firmware.sb /media/pi/Pulse/ >/dev/null;
 
-		sleep 10;
+		sleep 15;
 		echo 'Done Copying. You may now remove Pulse.';
 
 		# Wait for the Operator to unplug the device
