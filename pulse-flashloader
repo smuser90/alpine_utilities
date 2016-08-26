@@ -11,10 +11,11 @@ while true;
 	sleep 0.1;
 
 	do if ( lsusb | grep Freescale >/dev/null ) || ( lsusb | grep a531:0000 >/dev/null ); then
+		echo 'found a device, going to sleep for a bit'		
+		sleep 10;
 
-		sleep 1;
 		python /home/pi/alpine_utilities/pulse-LED.py 15 &
-
+			
 		# Check to see if the device was mounted correctly
 		if ls /media/pi/ | grep Pulse >/dev/null; then
 			echo 'Pulse was mounted correctly'
