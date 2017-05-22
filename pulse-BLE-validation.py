@@ -10,7 +10,7 @@ led = LED(4)
 scanCommand 	= "hcitool lescan"
 connectCommand 	= "hcitool lecc FE:ED:BA:BE:BE:EF"
 monitorCommand 	= "sudo btmon"
-hciUp 		= "hcitool hci0 up"
+hciUp 		= "hcitool hci0 up" 
 hciDown 	= "hcitool hci0 down"
 
 testID 		= sys.argv[1]
@@ -48,7 +48,7 @@ while True:
 
 	if('error' in output):
 		restartBluetooth()
-	
+
 	elif(pulseName in output):
 		print "Located Pulse! \nRestarting validation process in 5 seconds..."
 		sleep(5)
@@ -57,6 +57,3 @@ while True:
 	led.off()
 	sleep(1)
 	os.system('clear')
-	
-
-
